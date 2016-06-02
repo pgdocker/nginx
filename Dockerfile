@@ -11,4 +11,6 @@ RUN apk update && \
 
 RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/v0.0.8/ep-linux && chmod +x /usr/local/bin/ep
 
-CMD [ "/usr/local/bin/ep", "-v", "/etc/nginx/nginx.conf", "--", "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf" ]
+ADD docker-entrypoint.sh /entrypoint.sh
+
+CMD [ "/entrypoint.sh" ]
