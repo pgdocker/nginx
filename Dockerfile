@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Philip Graf <philip.graf@novapo.net>
 
-ADD etc /etc
+ADD etc/apk /etc/apk
 
 RUN apk update && \
   apk upgrade && \
@@ -36,5 +36,7 @@ RUN groupadd \
 RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/v0.0.8/ep-linux && chmod +x /usr/local/bin/ep
 
 ADD docker-entrypoint.sh /entrypoint.sh
+
+ADD etc/nginx /etc/nginx
 
 CMD [ "/entrypoint.sh" ]
